@@ -1,5 +1,5 @@
 <template>
-       <div class="bg-background h-full flex md:justify-center">
+       <div class="bg-background h-full min-h-screen flex md:justify-center">
         <div class="flex flex-col w-full md:max-w-[1000px]" v-if="words">
           <div class="p-10 flex flex-col h-full">
             <div class="flex flex-row my-3 justify-center md:justify-between">
