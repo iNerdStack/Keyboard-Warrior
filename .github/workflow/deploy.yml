@@ -1,0 +1,36 @@
+name: Build and Deploy
+
+on:
+  push:
+    branches:
+      - main # Trigger the workflow on push to the main branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code to the runner
+      - name: Checkout Code
+        uses: actions/checkout@v2
+
+      # Install Node.js and NPM
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Build the app
+      - name: Build
+        run: npm run generate
+
+      # Deploy the app to a separate branch
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@4.1.2
+        with:
+          branch: static-files # Deploy the static files to the static-files branch
+          folder: dist # Deploy the contents of the dist folder
